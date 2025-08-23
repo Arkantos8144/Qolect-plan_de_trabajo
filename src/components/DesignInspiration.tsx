@@ -37,7 +37,7 @@ export function DesignInspiration() {
         },
         {
           title: "Figma  - Prototipo dos",
-          url: "https://uxmastery.com/how-to-create-a-user-experience-flow-chart/",
+          url: "https://decoy-geek-96240730.figma.site/",
           description: "Probando estilos"
         }
       ]
