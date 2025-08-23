@@ -1,48 +1,66 @@
 import { useState } from "react";
-import { Palette, Smartphone, Monitor, PenTool, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Palette, Smartphone, Monitor, PenTool, ExternalLink, Eye } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
-import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Badge } from "./ui/badge";
 
 export function DesignInspiration() {
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const designReferences = [
     {
-      mainImage: "https://sfsrokbwfnccfvnzjasm.supabase.co/storage/v1/object/sign/imperio-rifas-bucket/Prueba/image.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xZmZmYjE5Ni02MDlkLTRkYmQtYTIzMS02YjhjODEzNDllZGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbXBlcmlvLXJpZmFzLWJ1Y2tldC9QcnVlYmEvaW1hZ2Uud2VicCIsImlhdCI6MTc1NTkwMTE4MCwiZXhwIjoxNzU2NTA1OTgwfQ.RrtoDWSZ1s5xfBhUq8BQdSAk0wP1-3iwrbUqLdFYfRI",
-      images: [
-        "https://sfsrokbwfnccfvnzjasm.supabase.co/storage/v1/object/sign/imperio-rifas-bucket/Prueba/image.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xZmZmYjE5Ni02MDlkLTRkYmQtYTIzMS02YjhjODEzNDllZGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbXBlcmlvLXJpZmFzLWJ1Y2tldC9QcnVlYmEvaW1hZ2Uud2VicCIsImlhdCI6MTc1NTkwMTE4MCwiZXhwIjoxNzU2NTA1OTgwfQ.RrtoDWSZ1s5xfBhUq8BQdSAk0wP1-3iwrbUqLdFYfRI",
-        "https://images.unsplash.com/photo-1604355231395-bf02775c357f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxuYXZpZ2F0aW9uJTIwaW50ZXJmYWNlJTIwZGVzaWdufGVufDF8fHx8MTc1NTkwMjA5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-        "https://images.unsplash.com/photo-1575388902449-6bca946ad549?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVtaXVtJTIwaW50ZXJmYWNlJTIwZGVzaWdufGVufDF8fHx8MTc1NTkwMjA5NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      ],
       title: "Interfaz de navegación premium",
-      description: "Referencia de diseño para navegación moderna y elegante",
-      type: "Inspiración UI"
+      description: "Referencia de diseño para navegación moderna y elegante con microinteracciones fluidas",
+      type: "Inspiración UI",
+      category: "Navigation",
+      links: [
+        {
+          title: "Epic - Travel App Navigation",
+          url: "https://epic.travel/epic-journal/",
+          description: "Navegación moderna para apps de viajes"
+        },
+        {
+          title: "librairie - experience App Navigation",
+          url: "https://librairie-experience.com/?ref=lapaninja",
+          description: "Navegación moderna para apps de viajes"
+        }
+      ]
     },
     {
-      mainImage: "https://sfsrokbwfnccfvnzjasm.supabase.co/storage/v1/object/sign/imperio-rifas-bucket/Prueba/image%20(1).webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xZmZmYjE5Ni02MDlkLTRkYmQtYTIzMS02YjhjODEzNDllZGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbXBlcmlvLXJpZmFzLWJ1Y2tldC9QcnVlYmEvaW1hZ2UgKDEpLndlYnAiLCJpYXQiOjE3NTU5MDE1NjAsImV4cCI6MTc1NjUwNjM2MH0.4rcYNi_4A6QzsW9KugMlLsHa28F90jNr4HPbFdy2z8Y",
-      images: [
-        "https://sfsrokbwfnccfvnzjasm.supabase.co/storage/v1/object/sign/imperio-rifas-bucket/Prueba/image%20(1).webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8xZmZmYjE5Ni02MDlkLTRkYmQtYTIzMS02YjhjODEzNDllZGQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJpbXBlcmlvLXJpZmFzLWJ1Y2tldC9QcnVlYmEvaW1hZ2UgKDEpLndlYnAiLCJpYXQiOjE3NTU5MDE1NjAsImV4cCI6MTc1NjUwNjM2MH0.4rcYNi_4A6QzsW9KugMlLsHa28F90jNr4HPbFdy2z8Y",
-        "https://images.unsplash.com/photo-1698434156098-68e834638679?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aXJlZnJhbWUlMjBtb2NrdXAlMjBkZXNpZ258ZW58MXx8fHx8MTc1NTkwMjA5M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-        "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjB1aSUyMGRlc2lnbnxlbnwxfHx8fDE3NTU4OTM3MzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      ],
-      title: "Wireframes iniciales",
-      description: "Proceso de wireframing y prototipado inicial del proyecto",
-      type: "Prototipo"
+      title: "Wireframes y prototipado",
+      description: "Referencias de proceso de wireframing para experiencias sobre la app existente",
+      type: "Prototipo",
+      category: "UX Process",
+      links: [
+        {
+          title: "Figma  - Prototipo uno",
+          url: "https://simple-stomp-97386391.figma.site/",
+          description: "Estilizando elementos"
+        },
+        {
+          title: "Figma  - Prototipo dos",
+          url: "https://uxmastery.com/how-to-create-a-user-experience-flow-chart/",
+          description: "Probando estilos"
+        }
+      ]
     },
     {
-      mainImage: "https://images.unsplash.com/photo-1730818029039-662126e61821?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBib29raW5nJTIwYXBwJTIwc2NyZWVufGVufDF8fHx8MTc1NTg5Nzk1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      images: [
-        "https://images.unsplash.com/photo-1730818029039-662126e61821?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBib29raW5nJTIwYXBwJTIwc2NyZWVufGVufDF8fHx8MTc1NTg5Nzk1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-        "https://images.unsplash.com/photo-1570894808314-677b57f25e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29raW5nJTIwYXBwJTIwaW50ZXJmYWNlfGVufDF8fHx8MTc1NTkwMjA5NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-        "https://images.unsplash.com/photo-1583319251241-214024248bb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBhcHAlMjBkYXNoYm9hcmR8ZW58MXx8fHwxNzU1OTAyMDk0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-      ],
-      title: "Pantalla de reservas",
-      description: "Funcionalidad de reservas y experiencia de usuario optimizada",
-      type: "Funcionalidad"
-    }
+      title: "Estilos Landing Page",
+      description: "Referencias de estilos de landing page, temas, colores, etc",
+      type: "Funcionalidad",
+      category: "Booking Flow",
+      links: [
+        {
+          title: "Storyboard - Flow",
+          url: "https://www.storyboard-agency.com/?ref=lapaninja",
+          description: "Diseño de flujos"
+        },
+        {
+          title: "Ada - Complex Forms",
+          url: "https://www.ada.cx/?ref=lapaninja",
+          description: "Patrones para formularios complejos"
+        }
+      ]
+    },
+    
   ];
 
   const getTypeIcon = (type: string) => {
@@ -64,27 +82,22 @@ export function DesignInspiration() {
     }
   };
 
-  const openCarousel = (projectIndex: number) => {
-    setSelectedProject(projectIndex);
-    setCurrentImageIndex(0);
-  };
-
-  const closeCarousel = () => {
-    setSelectedProject(null);
-    setCurrentImageIndex(0);
-  };
-
-  const nextImage = () => {
-    if (selectedProject !== null) {
-      const maxIndex = designReferences[selectedProject].images.length - 1;
-      setCurrentImageIndex(currentImageIndex >= maxIndex ? 0 : currentImageIndex + 1);
-    }
-  };
-
-  const prevImage = () => {
-    if (selectedProject !== null) {
-      const maxIndex = designReferences[selectedProject].images.length - 1;
-      setCurrentImageIndex(currentImageIndex <= 0 ? maxIndex : currentImageIndex - 1);
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case "Inspiración UI":
+        return "bg-purple-100 text-purple-700 border-purple-200";
+      case "Prototipo":
+        return "bg-blue-100 text-blue-700 border-blue-200";
+      case "Funcionalidad":
+        return "bg-green-100 text-green-700 border-green-200";
+      case "UX Design":
+        return "bg-orange-100 text-orange-700 border-orange-200";
+      case "Feature Design":
+        return "bg-indigo-100 text-indigo-700 border-indigo-200";
+      case "Diseño Propio":
+        return "bg-pink-100 text-pink-700 border-pink-200";
+      default:
+        return "bg-gray-100 text-gray-700 border-gray-200";
     }
   };
 
@@ -98,11 +111,11 @@ export function DesignInspiration() {
           </div>
           
           <h2 className="text-4xl text-gray-900">
-            Referencias visuales
+            Referencias y metodología
           </h2>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Referencias visuales que guiarán el rediseño de Qolect hacia una experiencia premium y centrada en el usuario.
+            Enlaces curados a las mejores referencias de diseño y metodologías que guiarán el rediseño de Qolect hacia una experiencia premium.
           </p>
         </div>
 
@@ -114,139 +127,79 @@ export function DesignInspiration() {
             return (
               <Card 
                 key={index} 
-                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white overflow-hidden group cursor-pointer"
-                onClick={() => openCarousel(index)}
+                className="border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white overflow-hidden group h-full"
               >
-                <div className="relative">
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <ImageWithFallback
-                      src={reference.mainImage}
-                      alt={reference.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  
-                  {/* Overlay con tipo */}
-                  <div className="absolute top-4 left-4">
-                    <div className="inline-flex items-center px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full text-xs shadow-sm">
-                      <TypeIcon className="w-3 h-3 mr-1" />
-                      {reference.type}
+                <CardContent className="p-6 space-y-4 h-full flex flex-col">
+                  {/* Header */}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Badge variant="outline" className={`${getTypeColor(reference.type)} border`}>
+                        <TypeIcon className="w-3 h-3 mr-1" />
+                        {reference.type}
+                      </Badge>
+                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {reference.category}
+                      </span>
                     </div>
+                    
+                    <h3 className="text-gray-900 font-medium">{reference.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{reference.description}</p>
                   </div>
 
-                  {/* Indicador de múltiples imágenes */}
-                  <div className="absolute top-4 right-4">
-                    <div className="inline-flex items-center px-2 py-1 bg-black/50 backdrop-blur-sm text-white rounded-full text-xs">
-                      +{reference.images.length}
+                  {/* Enlaces */}
+                  <div className="flex-grow space-y-3">
+                    <div className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Referencias externas
                     </div>
+                    
+                    {reference.links.map((link, linkIndex) => (
+                      <div 
+                        key={linkIndex}
+                        className="group/link border border-gray-200 rounded-lg p-3 hover:border-orange-300 hover:bg-orange-50/50 transition-all duration-200"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-medium text-gray-900 truncate">
+                              {link.title}
+                            </h4>
+                            <p className="text-xs text-gray-500 mt-1 line-clamp-2">
+                              {link.description}
+                            </p>
+                          </div>
+                          
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="shrink-0 h-8 w-8 p-0 hover:bg-orange-100 group-hover/link:text-orange-600"
+                            onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
+                          >
+                            <ExternalLink className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="text-white text-sm bg-black/50 px-3 py-1 rounded-full">
-                      Ver galería
-                    </div>
+                  {/* Footer con botón principal */}
+                  <div className="pt-4 border-t border-gray-100">
+                    <Button 
+                      className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                      onClick={() => {
+                        // Abrir todos los enlaces en pestañas separadas
+                        reference.links.forEach(link => {
+                          window.open(link.url, '_blank', 'noopener,noreferrer');
+                        });
+                      }}
+                    >
+                      <Eye className="w-4 h-4 mr-2" />
+                      Ver todas las referencias
+                    </Button>
                   </div>
-                </div>
-                
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-gray-900 font-medium">{reference.title}</h3>
-                  <p className="text-sm text-gray-600">{reference.description}</p>
                 </CardContent>
               </Card>
             );
           })}
         </div>
-
-        {/* Modal del carrusel */}
-        <Dialog open={selectedProject !== null} onOpenChange={(open) => !open && closeCarousel()}>
-          <DialogContent className="max-w-4xl w-full p-0 bg-black/95">
-            <DialogTitle className="sr-only">
-              {selectedProject !== null ? designReferences[selectedProject].title : ""}
-            </DialogTitle>
-            
-            {selectedProject !== null && (
-              <div className="relative">
-                {/* Botón cerrar */}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute top-4 right-4 z-10 text-white hover:bg-white/20"
-                  onClick={closeCarousel}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-
-                {/* Información del proyecto */}
-                <div className="absolute top-4 left-4 z-10 text-white">
-                  <div className="bg-black/50 backdrop-blur-sm rounded-lg p-3">
-                    <h3 className="text-lg font-medium">{designReferences[selectedProject].title}</h3>
-                    <p className="text-sm opacity-80">{designReferences[selectedProject].description}</p>
-                    <div className="flex items-center mt-2">
-                      {(() => {
-                        const TypeIcon = getTypeIcon(designReferences[selectedProject].type);
-                        return <TypeIcon className="w-4 h-4 mr-2" />;
-                      })()}
-                      <span className="text-xs">{designReferences[selectedProject].type}</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Imagen principal */}
-                <div className="relative aspect-video">
-                  <ImageWithFallback
-                    src={designReferences[selectedProject].images[currentImageIndex]}
-                    alt={`${designReferences[selectedProject].title} - Imagen ${currentImageIndex + 1}`}
-                    className="w-full h-full object-contain"
-                  />
-
-                  {/* Controles del carrusel */}
-                  {designReferences[selectedProject].images.length > 1 && (
-                    <>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
-                        onClick={prevImage}
-                      >
-                        <ChevronLeft className="h-6 w-6" />
-                      </Button>
-
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20"
-                        onClick={nextImage}
-                      >
-                        <ChevronRight className="h-6 w-6" />
-                      </Button>
-                    </>
-                  )}
-                </div>
-
-                {/* Indicadores de páginas */}
-                {designReferences[selectedProject].images.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                    {designReferences[selectedProject].images.map((_, imgIndex) => (
-                      <button
-                        key={imgIndex}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          imgIndex === currentImageIndex ? 'bg-white' : 'bg-white/50'
-                        }`}
-                        onClick={() => setCurrentImageIndex(imgIndex)}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                {/* Contador de imágenes */}
-                <div className="absolute bottom-4 right-4 text-white text-sm bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
-                  {currentImageIndex + 1} / {designReferences[selectedProject].images.length}
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
 
         {/* Principios de diseño */}
         <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl p-8 border border-orange-100">
