@@ -10,11 +10,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Current Situation */}
+      <CurrentSituation />
       {/* Hero Section */}
       <Hero />
       
-      {/* Current Situation */}
-      <CurrentSituation />
+      
 
       {/* Plans Section - Contains toggle and dynamic content */}
       <PlansSection isPremium={isPremium} onToggle={setIsPremium} />

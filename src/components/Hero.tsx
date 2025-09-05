@@ -24,7 +24,7 @@ export function Hero() {
                 Qolect:
               </span>
               <br />
-              Evolucionando la experiencia de viajes
+              Saúl huele feo
             </h1>
             
             <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
